@@ -2,18 +2,17 @@ const panel = document.querySelector(".grid-panel");
 const resetButton = document.querySelector(".reset");
 const gridSizeButton = document.querySelector(".grid-size");
 let gridSize = 16;
-
 createGrid(gridSize);
 
 function createGrid(gridSize) {
   for (let i = 0; i < gridSize * gridSize; i++) {
-      panel.appendChild(createDiv(panel.clientWidth / gridSize));
+    panel.appendChild(createDiv(panel.clientWidth / gridSize));
   }
 }
 
 function createDiv(size) {
-  const div = document.createElement('div');
-  div.classList.add('grid-element');
+  const div = document.createElement("div");
+  div.classList.add("grid-element");
   div.style.width = `${size}px`;
   div.style.height = `${size}px`;
 
@@ -31,11 +30,24 @@ function reset() {
     item.remove();
   });
   createGrid(gridSize);
-};
+}
 
 resetButton.addEventListener("click", reset);
 
 gridSizeButton.addEventListener("click", () => {
-  gridSize = parseInt(prompt());
+  let reserveGrid = gridSize;
+  gridSize = prompt("Choose new size for grid.(<=100)");
+  if (
+    isNaN(gridSize) ||
+    gridSize === null ||
+    gridSize === "" ||
+    gridSize > 100 ||
+    gridSize < 0
+  ) {
+    gridSize = reserveGrid;
+    alert("Please, type a number between 1 and 100.");
+  } else {
+    gridSize = parseInt(gridSize);
+  }
   reset();
 });

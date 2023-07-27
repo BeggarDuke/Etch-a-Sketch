@@ -1,3 +1,6 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
 .info-panel {
   text-align: center;
   margin: 2%;
@@ -10,13 +13,15 @@
   min-width: 50rem;
   margin: auto;
   flex-flow: row wrap;
-  border: 5px solid rgb(205, 155, 218);
+  border: 5px solid rgb(102, 97, 99);
   border-radius: 5px;
   position: relative;
+  padding: 0;
 }
 
 .grid-element {
-background-color: rgb(190, 190, 224);
-width: 5rem;
-height: 5rem;
+background-color: rgb(255, 255, 255);
+border: 1px solid rgba(128, 126, 126, 0.459);
+box-sizing: border-box;
+margin: 0;
 }
