@@ -1,0 +1,21 @@
+.info-panel {
+  text-align: center;
+  margin: 2%;
+}
+
+.grid-panel {
+  display: flex;
+  justify-content: space-around;
+  max-width: 50rem;
+  min-width: 50rem;
+  margin: auto;
+  flex-flow: row wrap;
+  border: 2px solid red;
+  position: relative;
+}
+
+.grid-element {
+background-color: blueviolet;
+width: 5rem;
+height: 5rem;
+}
