@@ -6,10 +6,8 @@ let gridSize = 16;
 createGrid(gridSize);
 
 function createGrid(gridSize) {
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
+  for (let i = 0; i < gridSize * gridSize; i++) {
       panel.appendChild(createDiv(panel.clientWidth / gridSize));
-    }
   }
 }
 
@@ -23,7 +21,7 @@ function createDiv(size) {
 }
 panel.addEventListener("mouseover", (e) => {
   if (e.target.matches(".grid-element")) {
-    e.target.style.backgroundColor = "red";
+    e.target.style.backgroundColor = "black";
   }
 });
 
@@ -32,15 +30,12 @@ function reset() {
   elements.forEach((item) => {
     item.remove();
   });
+  createGrid(gridSize);
 };
 
-resetButton.addEventListener("click", () => {
-  reset();
-  createGrid(gridSize);
-});
+resetButton.addEventListener("click", reset);
 
 gridSizeButton.addEventListener("click", () => {
   gridSize = parseInt(prompt());
   reset();
-  createGrid(gridSize);
 });

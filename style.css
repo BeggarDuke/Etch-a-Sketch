@@ -10,12 +10,13 @@
   min-width: 50rem;
   margin: auto;
   flex-flow: row wrap;
-  border: 2px solid red;
+  border: 5px solid rgb(205, 155, 218);
+  border-radius: 5px;
   position: relative;
 }
 
 .grid-element {
-background-color: blueviolet;
+background-color: rgb(190, 190, 224);
 width: 5rem;
 height: 5rem;
 }
