@@ -20,7 +20,7 @@
 }
 
 .grid-element {
-background-color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0, 0);
 border: 1px solid rgba(128, 126, 126, 0.459);
 box-sizing: border-box;
 margin: 0;

@@ -4,6 +4,8 @@ const gridSizeButton = document.querySelector(".grid-size");
 const blackColorButton = document.querySelector(".black-color");
 const randomColorButton = document.querySelector(".random-color");
 let gridSize = 16;
+let opacity;
+let newOpacity;
 createGrid(gridSize);
 
 function createGrid(gridSize) {
@@ -41,9 +43,15 @@ gridSizeButton.addEventListener("click", () => {
   reset();
 });
 
-randomColorButton.addEventListener("click", rgbHover);
+randomColorButton.addEventListener("click", () => {
+  panel.removeEventListener("mouseover", blackColor);
+  panel.addEventListener("mouseover", rgbHover);
+});
 
-blackColorButton.addEventListener("click", blackColor);
+blackColorButton.addEventListener("click", () => {
+  panel.removeEventListener("mouseover", rgbHover);
+  panel.addEventListener("mouseover", blackColor);
+});
 
 function reset() {
   const elements = document.querySelectorAll(".grid-element");
@@ -53,20 +61,29 @@ function reset() {
   createGrid(gridSize);
 }
 
-function blackColor() {
-  panel.addEventListener("mouseover", (e) => {
-    if (e.target.matches(".grid-element")) {
-      e.target.style.backgroundColor = "black";
+function blackColor(e) {
+  if (e.target.matches(".grid-element")) {
+    if (
+      e.target.style.backgroundColor === "" ||
+      (e.target.style.backgroundColor.substr(0, 4) !== "rgba" &&
+        e.target.style.backgroundColor !== "rgb(0, 0, 0)")
+    ) {
+      e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    } else {
+      opacity = parseFloat(e.target.style.backgroundColor.substr(-4));
+      newOpacity = opacity + 0.1;
+      e.target.style.backgroundColor = e.target.style.backgroundColor.replace(
+        `${opacity}`,
+        `${newOpacity}`
+      );
     }
-  });
+  }
 }
 
-function rgbHover() {
-  panel.addEventListener("mouseover", (e) => {
-    if (e.target.matches(".grid-element")) {
-      e.target.style.backgroundColor = `${getRandomColorNumber()}`;
-    }
-  });
+function rgbHover(e) {
+  if (e.target.matches(".grid-element")) {
+    e.target.style.backgroundColor = `${getRandomColorNumber()}`;
+  }
 }
 
 function getRandomColorNumber() {
