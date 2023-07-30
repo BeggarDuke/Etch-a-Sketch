@@ -1,9 +1,35 @@
 *, ::before, ::after {
   box-sizing: border-box;
 }
-.info-panel {
+
+.main-1 {
   text-align: center;
-  margin: 2%;
+}
+
+.main-2 {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-panel-1, .info-panel-2 {
+  margin: 0;
+  min-width: 8rem;
+  max-width: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+button {
+  max-height: 80px;
+  min-height: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  flex: 0 0 auto;
+  margin: 1rem;
 }
 
 .grid-panel {
@@ -11,7 +37,6 @@
   justify-content: space-around;
   max-width: 50rem;
   min-width: 50rem;
-  margin: auto;
   flex-flow: row wrap;
   border: 5px solid rgb(102, 97, 99);
   border-radius: 5px;
