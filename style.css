@@ -30,6 +30,12 @@ button {
   min-width: 80px;
   flex: 0 0 auto;
   margin: 1rem;
+  border: 5px solid rgb(102, 97, 99);
+  border-radius: 5px;
+}
+
+button:hover {
+  border: 5px solid rgba(102, 97, 99, 0.384);
 }
 
 .grid-panel {
